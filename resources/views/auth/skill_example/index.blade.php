@@ -12,7 +12,7 @@
                 </div>
                 <div class="panel-body">
                 @foreach($user->skill_examples as $example)   
-                    {{$example->name}}<br>
+                    <a href="{{route('skill_example.show', $example->id)}}">{{$example->name}}</a><br>
                 @endforeach
                 </div>
                 <div class="panel-footer">
