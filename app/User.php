@@ -10,6 +10,7 @@ use App\Contract;
 use Illuminate\Database\Eloquent\Model;
 use App\GoodRequest;
 use App\SkillExample;
+use App\Reputation;
 
 class User extends Authenticatable
 {
@@ -77,10 +78,43 @@ class User extends Authenticatable
     public function other_contracts() {
         return $this->hasMany('App\Contract', 'contractor2_id', 'id');
     }
+
+    public function all_contracts() {
+        $all_contracts = [];
+        foreach($this->my_contracts as $contract) {
+            $all_contracts[] = $contract;
+        }
+        foreach($this->other_contracts as $contract) {
+            $all_contracts[] = $contract;
+        }
+        return $all_contracts;
+    }
     
     public function skill_examples() {
         return $this->hasMany('App\SkillExample', 'user_id', 'id');
     }
+
+    public function has_reviewed($id) {
+        $contract = Contract::find($id);
+        $count = Reputation::where("contract_id", $id) 
+            ->where("contractor_id", $this->id)
+            ->count();
+        return $count>0;
+
+    }
+
+    public function has_outstanding_reviews() {
+        $all_contracts = $this->all_contracts();
+        foreach($all_contracts as $contract) {
+            if($contract->is_complete()) {
+                if(!$this->has_reviewed($contract->id)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
 
     public function can_access(Model $object) {
         if($object instanceof GoodRequest) {
@@ -122,5 +156,7 @@ class User extends Authenticatable
     private function can_access_skill_example(SkillExample $skill_example) {
         return $skill_example->user_id == $this->id;
     }
+
+
 
 }

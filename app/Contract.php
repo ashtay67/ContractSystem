@@ -110,6 +110,55 @@ class Contract extends Model
         $message->save();
     }
 
+    public function send_new_proposal() {
+        $this->send_new_proposal_to($this->contractor1_id, $this->contractor2_id);
+        $this->send_new_proposal_to($this->contractor2_id, $this->contractor1_id);
+    }
+
+    public function send_new_proposal_to($to_id, $from_id) {
+        $sender = User::find($from_id);
+        $receiver = User::find($to_id);
+        $subject = "{$sender->name} has proposed a contract with you.";
+        $body = '<a href="'.route('contracts.show', $this->id) . '">view the contract here</a>';
+        $reply_to = -1; 
+        /*
+        $reply_message = Message::find($reply_to);
+        if ($reply_message == null) {
+
+        }
+        else {
+            $subject = "Re: ".$reply_message->subject;
+        }   
+        */
+        $message = new Message; 
+        $message->subject = $subject;
+        $message->body = $body;
+        $message->priority = Message::PRIORITY_HIGH;
+        $message->read = false;
+        $message->sender_id = $sender->id;
+        $message->receiver_id = $receiver->id;
+        $message->reply_to = $reply_to;
+        $message->save();
+    }
+
+    public function complete_for($id) {
+         if ($this->contractor1_id == $id) {
+            $this->completed_contractor1 = true;
+        }
+        elseif ($this->contractor2_id == $id) {
+            $this->completed_contractor2 = true;
+        }
+        else
+            return false;
+
+        $this->save();
+        if ($this->completed_contractor1 == true && $this->completed_contractor2 == true) {
+            $this->status = self::STATUS_COMPLETE;
+            $this->save();
+        }
+        return true;
+    }
+
     public function is_complete() {
         return $this->status == self::STATUS_COMPLETE;
     }

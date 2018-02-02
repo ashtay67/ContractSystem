@@ -17,16 +17,16 @@
 
                     <div class="col-md-6 col-md-offset-3">
                         @if($contract->is_approved_for($user->id))
-                        <a href="#" class="btn btn-lg btn-block btn-success disabled">Can't Edit Approved</a>
-                        <a href="#" class="btn btn-success disabled">Contract Already Approved</a>
-                        @if(!$contract->is_complete())
-                        <a href="{{route('contracts.complete', $contract->id)}}" class="btn btn-success">Mark Complete</a>
-                        @else
-                        <a href="{{route('reputation.create', $contract->id)}}" class="btn btn-info">Review Contract</a>
-                        @endif
-                        @else
-                        <a href="{{route('contracts.edit', $contract->id)}}" class="btn btn-lg btn-block btn-success">Edit Contract</a>
-                        <a href="{{URL::route('contracts.approve', $contract->id)}}" class="btn btn-default">Approve Contract </a>
+                            @if(!$contract->is_complete())
+                                <a href="{{route('contracts.complete', $contract->id)}}" class="btn btn-success">Mark Complete</a>
+                            @else
+                                @if(!$user->has_reviewed($contract->id))
+                                    <a href="{{route('reputation.create', $contract->id)}}" class="btn btn-info">Review Contract</a>
+                                @endif
+                            @endif
+                        @else   
+                            <a href="{{route('contracts.edit', $contract->id)}}" class="btn btn-lg btn-block btn-success">Edit Contract</a>
+                            <a href="{{URL::route('contracts.approve', $contract->id)}}" class="btn btn-default">Approve Contract </a>
                         @endif
                     </div>
 
@@ -42,6 +42,9 @@
                     @foreach($contract->reviews as $review)
                             
                         <ul class="list-group">
+                             <li class="list-group-item">
+                                {{$review->reviewer->name}}'s Review on {{$review->format_date()}}
+                            </li>  
                              <li class="list-group-item">
                                 Reccomended? <span class="badge">{{$review->reccomend ? "Yes" : "No"}}</span>
                             </li>  

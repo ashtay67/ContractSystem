@@ -33,6 +33,9 @@ class ContractsController extends Controller
     public function create($id)
     {
        $user = Auth::user();
+       if ($user->has_outstanding_reviews()) {
+           return redirect()->route("contracts.index")->withErrors("You have outstanding reviews.");
+       }
        $contractor = User::find($id);
          if($contractor == null) {
 
@@ -41,7 +44,7 @@ class ContractsController extends Controller
         if($contractor->id == $user->id) {
             return redirect()->route("users.profile")->withErrors("You cannot contract with yourself.");
         }
-
+        //dd("text");
        return view('auth.contracts.create', compact('id', 'user', 'contractor'));
     }
 
@@ -75,6 +78,7 @@ class ContractsController extends Controller
         $new_contract->approved_contractor1 = true;
         $new_contract->message_id = 0;
         $new_contract->save();
+        $new_contract->send_new_proposal_to($contractor->id, $user->id);
         return redirect()->route("users.profile")->with("success","You successfully proposed a contract with {$contractor->name}");
     }
 
@@ -140,6 +144,9 @@ class ContractsController extends Controller
    public function approve($id)
     {
         $user = Auth::user();
+        if ($user->has_outstanding_reviews()) {
+           return redirect()->route("contracts.index")->withErrors("You have outstanding reviews.");
+       }
         $contract = Contract::find($id);
         $contractor = $contract->get_other_contractor($user->id);
         //dd($contractor, $user->idate(format));
@@ -162,12 +169,8 @@ class ContractsController extends Controller
         $user = Auth::user();
         $contract = Contract::find($id);
         $contractor = $contract->get_other_contractor($user->id);
-        $contract->status = Contract::STATUS_COMPLETE;
-        $contract->save();
-
-            return redirect()->route("contracts.show", $contract->id)->with("success", "Your contract with {$contractor->name} is now complete.");
-
-        
+        $contract->complete_for($user->id);
+            return redirect()->route("contracts.show", $contract->id)->with("success", "You have marked this contract with {$contractor->name} as complete.");
     }
 
     /**

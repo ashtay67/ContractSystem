@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\User;
+use Carbon\Carbon;
 
 class Message extends Model
 {
@@ -11,6 +12,8 @@ class Message extends Model
 	const PRIORITY_NORMAL = 5;
 	const PRIORITY_HIGH = 10;
 	const PRIORITY_LOW = 0;
+
+    const DATE_FORMAT = "F jS 'y g:i a";
 
 	public function canAccess(User $user) {
 
@@ -28,6 +31,11 @@ class Message extends Model
 
     public function reply() {
     	return $this->hasOne('App\Message', 'reply_to', 'id');
+    }
+
+    public function format_date() {
+        $date = Carbon::parse($this->created_at);
+        return $date->format(self::DATE_FORMAT);
     }
 
 }

@@ -17,6 +17,9 @@ class ReputationController extends Controller
     public function create($id) {
     	$contract = Contract::find($id);
     	$user = Auth::user();
+        if($user->has_reviewed($contract->id)) {
+            return redirect()->route("contracts.show", $contract->id)->withErrors("You have already reviewed this contract.");
+        }
     	$contractor = $contract->get_other_contractor($user->id);
     	return view('auth.reputation.create', compact('contract', 'user', 'contractor'));
     }
@@ -24,6 +27,9 @@ class ReputationController extends Controller
     public function store(Request $request, $id) {
     	$contract = Contract::find($id);
     	$user = Auth::user();
+        if($user->has_reviewed($contract->id)) {
+            return redirect()->route("contracts.show", $contract->id)->withErrors("You have already reviewed this contract.");
+        }
     	$contractor = $contract->get_other_contractor($user->id);
     	$description = $request->description;
     	$reccomend = $request->reccomend; 

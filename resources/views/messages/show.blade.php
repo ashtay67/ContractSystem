@@ -28,7 +28,7 @@
                 </div>
 
                 <div class="panel-body">
-                    {!!$reply->body!!}
+                    ajdflajsd;lfj{!!$reply->body!!}
                      
                 </div>
 

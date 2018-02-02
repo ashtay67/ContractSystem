@@ -21,6 +21,7 @@
                                 <a href="{{route('messages.show', $sentmessage->id)}}">
                                      {{$sentmessage->subject}}
                                 </a>
+                                <span class="float-right">{{$sentmessage->format_date()}} </span>
                             </li>
                         @endforeach
                     </ul> 
@@ -38,7 +39,10 @@
                         @foreach($user->received_messages as $receivedmessage)
                             <li class="list-group-item {{ !$receivedmessage->read ? "message-unread" : ""}}"><a href="{{route('messages.show', $receivedmessage->id)}}">
                                      {{$receivedmessage->subject}}
-                                </a></li>
+                                </a>
+                            <span class="float-right">{{$receivedmessage->format_date()}} </span>
+
+                            </li>
                         @endforeach
                     </ul> 
                 </div>
