@@ -21,19 +21,16 @@
                     @endforeach
                      </ul>
                     <hr>
+                    Hello
                   <h3>Add Skill</h3>
                   {!! Form::open(['route' => ['users.addskill'], 'method' => 'post']) !!}
 
                    <div class="form-group">
                         <label for="skill">New Skill</label>
-                        <select type="text" class="form-control" id="skill" name="skill">
-                            @foreach($skills as $skill)
+                        
+                        <input id="add_skill" type="text" />
 
-                                <option value="{{$skill->id}}">{{$skill->name}}</option>
 
-                            @endforeach
-
-                        </select>
 
                         <input value="Add Skill" type="submit">
                     </div>
@@ -45,4 +42,15 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+        var options = {
+            data: ["blue", "green", "pink", "red", "yellow"],
+            getValue: name,
+        };
+
+        $("#add_skill").easyAutocomplete(options);
+    });
+    
+</script>
 @endsection

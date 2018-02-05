@@ -45,10 +45,18 @@ class SkillController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->description);
         $name = $request->name;
         $description = $request->description;
         $parentid = $request->parent_id;
+        $name = strtolower($name);
+        $count = Skill::where("name", $name)
+            ->count();
+        if($count>0) {
+            return redirect()->route("users.profile")->withErrors("That skill already exists");
+        }
+
+        //dd($request->description);
+    
         $newskill = new Skill;
         $newskill->name = $name;
         $newskill->description = $description;

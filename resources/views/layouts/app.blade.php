@@ -9,6 +9,16 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="/js/easy-autocomplete/dist/jquery.easy-autocomplete.js"></script>
+    <link rel="stylesheet" href="/js/easy-autocomplete/dist/easy-autocomplete.min.css"> 
+    <link rel="stylesheet" href="/js/easy-autocomplete/dist/easy-autocomplete.themes.min.css">  
+    <!--
+    <script src="/{{base_path()}}/node_modules/easy-autocomplete/dist/jquery.easy-autocomplete.min.js"></script> 
+    <!-- CSS file -->
+    <!--
+    <link rel="stylesheet" href="/{{base_path()}}/node_modules/easy-autocomplete/dist/easy-autocomplete.min.css"> 
+    <link rel="stylesheet" href="/{{base_path()}}/node_modules/easy-autocomplete/dist/easy-autocomplete.themes.min.css"> 
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -156,6 +166,6 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+    
 </body>
 </html>
