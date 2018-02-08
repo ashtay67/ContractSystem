@@ -10,9 +10,9 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
     <script src="{{ asset('js/app.js') }}"></script>
-    <script src="/js/easy-autocomplete/dist/jquery.easy-autocomplete.js"></script>
-    <link rel="stylesheet" href="/js/easy-autocomplete/dist/easy-autocomplete.min.css"> 
-    <link rel="stylesheet" href="/js/easy-autocomplete/dist/easy-autocomplete.themes.min.css">  
+    <script src="{{ asset('/js/easy-autocomplete/dist/jquery.easy-autocomplete.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('/js/easy-autocomplete/dist/easy-autocomplete.min.css') }}"> 
+    <link rel="stylesheet" href="{{ asset('/js/easy-autocomplete/dist/easy-autocomplete.themes.min.css') }}">  
     <!--
     <script src="/{{base_path()}}/node_modules/easy-autocomplete/dist/jquery.easy-autocomplete.min.js"></script> 
     <!-- CSS file -->
