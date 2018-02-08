@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Skill;
+use stdClass;
 
 class SkillController extends Controller
 {
@@ -131,6 +132,18 @@ class SkillController extends Controller
         return redirect()->route("skills.show", $skill->id);
 
 
+    }
+
+    public function all() {
+        $allskills = Skill::all();
+        $skills = [];
+        foreach($allskills as $skill) {
+            $skillobject = new stdClass();
+            $skillobject->name = $skill->name;
+            $skillobject->id = $skill->id;
+            $skills[] = $skillobject;
+        }
+        return response()->json($skills);
     }
 
     /**

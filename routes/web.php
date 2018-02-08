@@ -22,9 +22,8 @@ Route::get('/profile', 'UserController@profile')->name('users.profile');
 Route::get('/profile/{id}', 'UserController@publicprofile')->name('users.public.profile');
 Route::post('/profile', 'UserController@add_user_skills')->name('users.addskill');
 
-
+Route::get('skills/all', 'SkillController@all')->name('skills.all');
 Route::resource('skills', 'SkillController');
-
 
 Route::prefix('goods')->group( function(){
 	Route::get('create', 'GoodController@create')->name('goods.create');

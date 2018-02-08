@@ -28,7 +28,7 @@
                    <div class="form-group">
                         <label for="skill">New Skill</label>
                         
-                        <input id="add_skill" type="text" />
+                        <input id="add_skill" name="skill" type="text" />
 
 
 
@@ -45,8 +45,16 @@
 <script>
     $(document).ready(function() {
         var options = {
-            data: ["blue", "green", "pink", "red", "yellow"],
-            getValue: name,
+            url:"{{route('skills.all')}}",
+            getValue: function(element) {
+                return element.id + ": " + element.name;
+            },
+            list: {
+                match: {
+                    enabled: true
+                }
+            }
+          
         };
 
         $("#add_skill").easyAutocomplete(options);

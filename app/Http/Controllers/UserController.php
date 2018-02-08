@@ -45,7 +45,9 @@ class UserController extends Controller
 
         //dd($request->all());
 
-        $skill_id = $request->skill;
+        $skill_value = $request->skill;
+        $skill_piece = explode(":", $skill_value);
+        $skill_id = intval($skill_piece[0]);
         $skill = Skill::find($skill_id);
         if($skill == null) {
             //dd("bad skill", $skill_id);
