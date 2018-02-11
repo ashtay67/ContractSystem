@@ -11,7 +11,7 @@
                 </div>
 
                 <div class="panel-body">
-                    
+                 
                      <ul class="list-group">
                         @foreach($user->good_requests as $goodrequest)
                             <li class="list-group-item">
@@ -21,6 +21,10 @@
                             </li>
                         @endforeach
                     </ul> 
+
+                     <a class="float-left btn btn-primary btn-md group-btn" href="{{route("good_request.create")}}">
+                        Create a new Request
+                 </a> 
                 </div>
             </div>
 

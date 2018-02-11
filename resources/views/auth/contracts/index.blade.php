@@ -8,7 +8,7 @@
                 <div class="panel-heading">My Contracts</div>
 
                 <div class="panel-body">
-                   <h3>My</h3>
+                   <h3>Contracts I Proposed</h3>
                     <ul class="list-group">
                     @foreach($user->my_contracts as $contract)
 
@@ -21,7 +21,7 @@
                     @endforeach
                      </ul>
 
-                    <h3>Other</h3>
+                    <h3>Contracts Others Proposed</h3>
                      <ul class="list-group">
                     @foreach($user->other_contracts as $contract)
 

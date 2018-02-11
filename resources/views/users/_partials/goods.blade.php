@@ -9,11 +9,11 @@ if (isset($public)) {
 ?>
 
 <div class="panel panel-default">
-    <div class="panel-heading">{{$user->name}}'s Goods</div>
+    <div class="panel-heading">Goods</div>
 
     <div class="panel-body">
         @if($show_buttons)
-        <a class="float-right btn btn-success btn-lg group-btn" href="{{route("goods.create")}}">
+        <a class="float-right btn btn-success btn-md group-btn" href="{{route("goods.create")}}">
                         Add a Good
         </a>
         @endif

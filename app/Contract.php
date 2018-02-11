@@ -22,6 +22,11 @@ class Contract extends Model
         return $this->belongsTo('App\User', 'contractor2_id', 'id');
     }
 
+    public function canAccess(User $user) {
+
+        return $user->id == $this->contractor1_id || $user->id == $this->contractor2_id;
+    }
+
     public function contractor1_good() {
         return $this->belongsTo('App\Good', 'contractor1_good_id', 'id');
     }

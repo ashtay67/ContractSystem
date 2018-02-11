@@ -104,7 +104,7 @@
                                     </li>
 
                                      <li>
-                                        <a href="{{route('good_request.create')}}">
+                                        <a href="{{route('good_request.index')}}">
                                             My Requests
                                         </a>
 

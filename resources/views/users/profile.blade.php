@@ -12,7 +12,6 @@
                 <div class="panel-heading">My Skills</div>
 
                 <div class="panel-body">
-                    <h3>My Skills</h3>
                     <ul class="list-group">
                     @foreach($user->skills as $skill)
                         <li class="list-group-item">
@@ -21,8 +20,8 @@
                     @endforeach
                      </ul>
                     <hr>
-                    Hello
-                  <h3>Add Skill</h3>
+                    
+                  <h3>Add a new Skill</h3>
                   {!! Form::open(['route' => ['users.addskill'], 'method' => 'post']) !!}
 
                    <div class="form-group">

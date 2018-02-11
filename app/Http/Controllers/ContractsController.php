@@ -92,6 +92,10 @@ class ContractsController extends Controller
     {
         $user = Auth::user();
         $contract = Contract::find($id);
+        if (!$contract->canAccess(Auth::user())) {
+            return redirect()->route("users.profile")->withErrors("Unfortunately there is an error.");
+
+        }
 
         //dd($contract->reviews);
         return view('auth.contracts.show', compact('contract', 'user'));
