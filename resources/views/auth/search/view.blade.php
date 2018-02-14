@@ -9,11 +9,13 @@
                 <div class="panel-heading">
                     Search Results
 
+                    <span class="float-right">Displaying {{count($search_results)}}</span>
+
                 </div>
 
                 <div class="panel-body">
-                    @foreach($search_results as $search_result)
-                        <a href="{{$search_result->get_link()}}">{{$search_result->get_name()}}</a><br>
+                    @foreach($search_results as $number => $search_result)
+                        {{$number + 1}}. <a href="{{$search_result->get_link()}}">{{$search_result->get_name()}}</a><br>
                         {!!$search_result->get_description()!!}<br><br>
                     @endforeach
                 </div>

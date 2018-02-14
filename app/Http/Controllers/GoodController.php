@@ -46,13 +46,12 @@ class GoodController extends Controller
         $user = Auth::user();
         $user_id = $user->id; 
         $good = Good::find($id);
-        $good_owner = $good->user_id;
-        $name = User::find($good_owner)->name;
+        $good_owner = $good->user;
          if($good == null) {
             //dd("bad skill", $skill_id);
              return redirect()->route("users.profile")->withErrors("That good doesn't exist");
         }
-        return view("auth.goods.show", compact('good', 'user', 'good_owner', 'user_id', 'name'));
+        return view("auth.goods.show", compact('good', 'user', 'good_owner', 'user_id'));
     }
 
      public function edit($id) {

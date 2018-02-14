@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\User;
 use Carbon\Carbon;
+use Mail;
+use App\Mail\MessageSent;
 
 class Message extends Model
 {
@@ -36,6 +38,17 @@ class Message extends Model
     public function format_date() {
         $date = Carbon::parse($this->created_at);
         return $date->format(self::DATE_FORMAT);
+    }
+
+    public function save(array $options = []) {
+        $count = 0;
+        $count = Self::where('id', $this->id)->count();
+        $exists = $count>0;
+        parent::save($options);
+        if(!$exists) {
+            Mail::to($this->receiver->email)->send(new MessageSent($this));
+        }
+        
     }
 
 }
