@@ -23,6 +23,7 @@
 
                         <div class="form-group">
                              <label for="search_type">What are you searching for?</label><br>
+                             or just select a catgeory to see all results<br>
                              <input type="radio" name="search_type" value="1">People<br>
                              <input type="radio" name="search_type" value="2">Organizations<br>
                              <input type="radio" name="search_type" value="3">Requests<br>

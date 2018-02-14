@@ -7,7 +7,7 @@
             
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    {{$good->name}}
+                    {{$good->name}} from <a href="{{route("users.public.profile", $good_owner)}}">{{$name}}</a>
                     @if($user_id == $good_owner)
                     <a class="float-right btn btn-warning btn-xs group-btn" href="{{route("goods.edit", $good->id)}}">
                         Edit

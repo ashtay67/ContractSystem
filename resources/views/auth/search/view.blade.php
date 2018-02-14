@@ -14,7 +14,7 @@
                 <div class="panel-body">
                     @foreach($search_results as $search_result)
                         <a href="{{$search_result->get_link()}}">{{$search_result->get_name()}}</a><br>
-                        {!!$search_result->get_description()!!}
+                        {!!$search_result->get_description()!!}<br><br>
                     @endforeach
                 </div>
             </div>

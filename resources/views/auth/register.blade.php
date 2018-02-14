@@ -5,9 +5,13 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
+                <div class="panel-heading">Register on Regenerative Resource Exchange</div>
 
                 <div class="panel-body">
+                
+                <div class="text" style="text-align:left">    
+                This site is the first release of an open source contracting system.  You can use the site to exchange or make agreements with people and organizations. It is inspired by the many types of social contracts that have been the organizing force of all cultures throughout humanity's existence.<br><br>  Your data will never be used for any purpose that you do not explicitly agree to in which there will be a contract sent to you to agree or disagree. As the system develops you will be updated on any possible decisions we are considering and asked how and if you want to participate. During this testing phase please <a href="mailto:ashtay67@gmail.com">contact the site admin</a> for questions, concerns, ideas, or feedback.  The code for the site is hosted <a href="https://www.github.com/ashtay67/contractsystem" target="github.com">here</a>. Happy Contracting!
+                </div>
                     <form class="form-horizontal" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
 

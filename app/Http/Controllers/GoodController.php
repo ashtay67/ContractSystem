@@ -7,6 +7,7 @@ use App\Good;
 use Auth;
 use App\UserSkill;
 use Carbon\Carbon;
+use App\User;
 
 class GoodController extends Controller
 {
@@ -46,11 +47,12 @@ class GoodController extends Controller
         $user_id = $user->id; 
         $good = Good::find($id);
         $good_owner = $good->user_id;
+        $name = User::find($good_owner)->name;
          if($good == null) {
             //dd("bad skill", $skill_id);
              return redirect()->route("users.profile")->withErrors("That good doesn't exist");
         }
-        return view("auth.goods.show", compact('good', 'user', 'good_owner', 'user_id'));
+        return view("auth.goods.show", compact('good', 'user', 'good_owner', 'user_id', 'name'));
     }
 
      public function edit($id) {
