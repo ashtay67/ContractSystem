@@ -7,7 +7,7 @@
             
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Subject: {{$message->subject}}
+                    Subject: {{$message->subject}} from {{$message->sender->name}} to {{$message->receiver->name}}
                       
                 </div>
 
@@ -23,12 +23,12 @@
 
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Subject: {{$reply->subject}}
+                    Subject: {{$reply->subject}} from {{$reply->sender->name}} to {{$reply->receiver->name}}
                       
                 </div>
 
                 <div class="panel-body">
-                    ajdflajsd;lfj{!!$reply->body!!}
+                    {!!$reply->body!!}
                      
                 </div>
 

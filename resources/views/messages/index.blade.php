@@ -19,7 +19,7 @@
                             ?>
                             <li class="list-group-item {{ !$sentmessage->read ? "message-unread" : ""}}">
                                 <a href="{{route('messages.show', $sentmessage->id)}}">
-                                     {{$sentmessage->subject}}
+                                     {{$sentmessage->subject}} to {{$sentmessage->receiver->name}}
                                 </a>
                                 <span class="float-right">{{$sentmessage->format_date()}} </span>
                             </li>
@@ -38,7 +38,7 @@
                      <ul class="list-group">
                         @foreach($user->received_messages as $receivedmessage)
                             <li class="list-group-item {{ !$receivedmessage->read ? "message-unread" : ""}}"><a href="{{route('messages.show', $receivedmessage->id)}}">
-                                     {{$receivedmessage->subject}}
+                                     {{$receivedmessage->subject}} from {{$receivedmessage->sender->name}}
                                 </a>
                             <span class="float-right">{{$receivedmessage->format_date()}} </span>
 
