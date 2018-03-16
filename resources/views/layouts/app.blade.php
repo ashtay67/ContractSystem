@@ -56,7 +56,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        <img src="{{asset('images/small_logo.jpg')}}"
                     </a>
                 </div>
 

@@ -9,9 +9,10 @@
 
                 <div class="panel-body">
                 
-                <div class="text" style="text-align:left">    
-                This site is the first release of an open source contracting system.  You can use the site to exchange or make agreements with people and organizations. It is inspired by the many types of social contracts that have been the organizing force of all cultures throughout humanity's existence.<br><br>  Your data will never be used for any purpose that you do not explicitly agree to in which there will be a contract sent to you to agree or disagree. As the system develops you will be updated on any possible decisions we are considering and asked how and if you want to participate. During this testing phase please <a href="mailto:ashtay67@gmail.com">contact the site admin</a> for questions, concerns, ideas, or feedback.  The code for the site is hosted <a href="https://www.github.com/ashtay67/contractsystem" target="github.com">here</a>. Happy Contracting!
+                <div class="text well well-sm" style="text-align:left">    
+                This site is the first release of an open source contracting system.  You can use the site to exchange or make agreements with people and organizations. It is inspired by the many types of social contracts that have been the organizing force of all cultures throughout humanity's existence.<br><br>  Your data will never be used for any purpose that you do not explicitly agree to in which there will be a contract sent to you to agree or disagree. As the system develops you will be updated on any possible decisions we are considering and asked how and if you want to participate. During this testing phase please <a href="mailto:ashley@re-gen.exchange">contact the site admin</a> for questions, concerns, ideas, or feedback.  The code for the site is hosted <a href="https://www.github.com/ashtay67/contractsystem" target="github.com">here</a>. Happy Contracting!
                 </div>
+                <hr>
                     <form class="form-horizontal" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
 
@@ -30,18 +31,25 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                            
                             <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
 
-                                @if ($errors->has('email'))
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                
+
+                                    <span class="input-group-addon">@</span>
+
+                                    <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Email" required>
+                                </div>
+                            </div>
+                        </div>
+                        @if ($errors->has('email'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
-                                @endif
-                            </div>
-                        </div>
+                        @endif
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">Password</label>
@@ -98,7 +106,14 @@
                             <label for="state" class="col-md-4 control-label">State</label>
 
                             <div class="col-md-6">
+                            <!--
                                 <input id="state" type="text" class="form-control" name="state" value="{{ old('state') }}" required autofocus>
+                            -->
+                            <select class="form-control">
+                                @foreach($states as $abr => $state) 
+                                <option value="{{$abr}}">{{ucfirst(strtolower($state))}}</option>
+                                @endforeach
+                            </select>    
 
                                 @if ($errors->has('state'))
                                     <span class="help-block">

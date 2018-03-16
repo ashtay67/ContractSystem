@@ -6,4 +6,13 @@
 @import "variables";
 
 // Bootstrap
-@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+
+.navbar-brand {
+	img {
+		width: 60px;
+		margin-top: -10px;
+	}
+}
+
