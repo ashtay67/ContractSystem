@@ -25,8 +25,8 @@
                                 @endif
                             @endif
                         @else   
-                            <a href="{{route('contracts.edit', $contract->id)}}" class="btn btn-lg btn-block btn-success">Edit Contract</a>
-                            <a href="{{URL::route('contracts.approve', $contract->id)}}" class="btn btn-default">Approve Contract </a>
+                            <a href="{{route('contracts.edit', $contract->id)}}" class="btn btn-info">Edit Contract</a>
+                            <a href="{{URL::route('contracts.approve', $contract->id)}}" class="btn btn-success">Approve Contract </a>
                         @endif
                     </div>
 

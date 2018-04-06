@@ -9,18 +9,18 @@ if (isset($public)) {
 ?>
 
 <div class="panel panel-default">
-    <div class="panel-heading">Goods</div>
+    <div class="panel-heading">Resources</div>
 
     <div class="panel-body">
         @if($show_buttons)
         <a class="float-right btn btn-success btn-md group-btn" href="{{route("goods.create")}}">
-                        Add a Good
+                        Add a Resource
         </a>
         @endif
         @if(!$show_buttons)
-        <h3>{{$user->name}}'s Goods</h3>
+        <h3>{{$user->name}}'s Resources</h3>
         @else
-        <h3>My Goods</h3>
+        <h3>My Resources</h3>
         @endif
         <ul class="list-group">
             @foreach($user->goods as $good)
