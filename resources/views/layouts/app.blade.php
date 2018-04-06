@@ -56,7 +56,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        <img src="{{asset('images/small_logo.jpg')}}"
+                        <img src="{{asset('images/small_logo.jpg')}}" />
                     </a>
                 </div>
 

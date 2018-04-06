@@ -13,8 +13,8 @@
                     @foreach($user->my_contracts as $contract)
 
                         <li class="list-group-item">
-                            @if($contract->is_approved_for($user->id))
-                            <span class="glyphicon glyphicon-ok"></span>
+                            @if($contract->is_approved())
+                            <img src="{{asset('images/success.png')}}" />
                             @endif
                         <a href="{{route("contracts.show", $contract->id)}}">{{ucfirst($contract->get_name(false))}}</a>
                          </li>
@@ -26,8 +26,8 @@
                     @foreach($user->other_contracts as $contract)
 
                         <li class="list-group-item">
-                            @if($contract->is_approved_for($user->id))
-                            <span class="glyphicon glyphicon-ok"></span>
+                            @if($contract->is_approved())
+                            <img src="{{asset('images/success.png')}}" />
                             @endif
                         <a href="{{route("contracts.show", $contract->id)}}">{{ucfirst($contract->get_name(false))}}
                         </a>

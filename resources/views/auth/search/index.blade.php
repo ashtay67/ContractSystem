@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
@@ -12,13 +13,14 @@
 
                 <div class="panel-body">
                  <div class="col-md-8 col-md-offset-2">
+  
                     <form action="{{route('search.search')}}" method="POST">
                         <div class="col-md-10">
                         <input class="form-control" placeholder="Search" name="search_term" id="search_term" type="text">
                         </div>
             
-                        <button class="btn btn-default float-right">
-                                    <i class="glyphicon glyphicon-search"></i>
+                        <button class="btn btn-primary float-right btn-search">
+                            Search
                         </button>
 
                         <div class="form-group">
