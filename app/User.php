@@ -157,6 +157,10 @@ class User extends Authenticatable
         return $skill_example->user_id == $this->id;
     }
 
-
+    public function get_name_link()  {
+        $name = $this->name;
+        $link = route('users.public.profile', $this->id);
+        return "<a href='$link'>$name</a>";
+    }
 
 }

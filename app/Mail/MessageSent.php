@@ -16,6 +16,7 @@ class MessageSent extends Mailable
     private $sender;
     private $receiver;
     private $message; 
+    private $_link_text;
     /**
      * Create a new message instance.
      *
@@ -28,6 +29,7 @@ class MessageSent extends Mailable
         $this->receiver = $message->receiver;
         $this->_subject = "New Message on Re-gen.Exchange from " . $this->sender->name; 
         $this->_body = "You have a new message on Re-gen.Exchange from " . $this->sender->name . " with the subject " . $message->subject . " on date " . $message->created_at;
+        $this->_link_text .= "<br><a href='". route('messages.show', $message->id) ."'> reply on re-gen.exchange here</a>";
     }
 
     /**
@@ -42,7 +44,8 @@ class MessageSent extends Mailable
         ->subject($this->_subject)
         ->with([
             'body' => $this->_body,
-            'message_body' => $this->message->body
+            'message_body' => $this->message->body,
+            'link_text' => $this->_link_text
 
         ]);
     }

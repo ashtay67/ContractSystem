@@ -39,8 +39,13 @@ class Contract extends Model
         return $this->hasMany('App\Reputation', 'contract_id', 'id');
     } 
 
-    public function get_name() {
-    	$name = "Contract Between " . $this->contractor_1->name . " and " . $this->contractor_2->name . " on " . $this->created_at;
+    public function get_name($html_link = True) {
+        if($html_link) {
+          $name = "Contract Between " . $this->contractor_1->get_name_link() . " and " . $this->contractor_2->get_name_link() . " on " . $this->created_at;
+        }
+        else {
+            $name = "Contract Between " . $this->contractor_1->name . " and " . $this->contractor_2->name . " on " . $this->created_at;
+        }
     	return $name;
     }
 

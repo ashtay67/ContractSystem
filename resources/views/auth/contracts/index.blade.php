@@ -16,7 +16,7 @@
                             @if($contract->is_approved_for($user->id))
                             <span class="glyphicon glyphicon-ok"></span>
                             @endif
-                        <a href="{{route("contracts.show", $contract->id)}}">{{ucfirst($contract->get_name())}}</a>
+                        <a href="{{route("contracts.show", $contract->id)}}">{{ucfirst($contract->get_name(false))}}</a>
                          </li>
                     @endforeach
                      </ul>
@@ -29,7 +29,7 @@
                             @if($contract->is_approved_for($user->id))
                             <span class="glyphicon glyphicon-ok"></span>
                             @endif
-                        <a href="{{route("contracts.show", $contract->id)}}">{{ucfirst($contract->get_name())}}
+                        <a href="{{route("contracts.show", $contract->id)}}">{{ucfirst($contract->get_name(false))}}
                         </a>
                          </li>
                     @endforeach

@@ -16,3 +16,20 @@
 	}
 }
 
+.list-group-item {
+	color: black;
+}
+
+a {
+	color: #4C0EB5;
+}
+
+.panel-heading > a {
+	color: #FFEF14;
+}
+
+button, html input[type="button"], 
+	input[type="reset"], 
+	input[type="submit"] {
+	color: $brand-blue;
+}

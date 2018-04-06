@@ -7,7 +7,7 @@
             
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Subject: {{$message->subject}} from {{$message->sender->name}} to {{$message->receiver->name}}
+                    Subject: {{$message->subject}} from {!!$message->sender->get_name_link()!!} to {!!$message->receiver->get_name_link()!!}
                       
                 </div>
 
@@ -23,7 +23,7 @@
 
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Subject: {{$reply->subject}} from {{$reply->sender->name}} to {{$reply->receiver->name}}
+                    Subject: {{$reply->subject}} from {!!$reply->sender->get_name_link()!!} to {!!$reply->receiver->get_name_link()!!}
                       
                 </div>
 
