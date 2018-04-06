@@ -5816,4 +5816,7 @@ input[type="reset"],
 input[type="submit"] {
   color: #618683; }
 
+.well {
+  background-color: transparent; }
+
 /*# sourceMappingURL=app.css.map */
